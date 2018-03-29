@@ -17,17 +17,22 @@ module Data_Memory(clk, memWrite, memRead, address, writeData/*, Byte_Warning*/,
   output reg [31:0] readData;
 
   /* declare registers */
-  reg [31:0] memory[32'h7ffffffc>>2: (32'h7ffffffc>>2)-256]; // define memory from stack pointer shift right 2 to 256 less than that to make room
+  reg [31:0] memory[32'h7ffffffc>>2: (32'h7ffffffc>>2)-2048]; // define memory from stack pointer shift right 2 to 256 less than that to make room
 
-  always @(*)
+  always @(posedge clk)
   begin
+    #1
     if (memRead == 1)
+    begin
+      // $display($time, " Read out %08x", memory[address >> 2]);
       readData = memory[address >> 2]; // at read, set readData to memory at address shifted right 2
+    end
   end
 
   always @(negedge clk)
   begin
     if(memWrite == 1) begin
+      // $display($time, " MEM: Writing data %08x to address %08x", writeData, address);
       memory[address >> 2] = writeData; // at write, set memory at address shifted right 2 to writeData
 
   //     if(Byte_Warning == 0) begin

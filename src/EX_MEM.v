@@ -28,7 +28,7 @@ module EX_MEM(clk, MEM_E, WB_E, ALUOut_E, WriteData_E, WriteReg_E,
 		MEM_M <= MEM_E;
 		WB_M <= WB_E;
 		ALUOut_M <= ALUOut_E;
-		WriteReg_M <= WriteData_E;
+		WriteData_M <= WriteData_E;
 		WriteReg_M <= WriteReg_E;
 	end
 

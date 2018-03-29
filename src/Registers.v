@@ -43,6 +43,7 @@ module Registers(clk, jal_control, jal_address, readReg1, readReg2, writeReg, wr
     #1
     if ((RegWrite_D == 1) & (jal_control == 1)) // write on control signal
       begin
+        // $display($time, " Setting ra to be %08x", jal_address);
         registers[`ra] = jal_address;
       end
   end
@@ -50,8 +51,10 @@ module Registers(clk, jal_control, jal_address, readReg1, readReg2, writeReg, wr
   /* write on negative edge of clock */
   always @(posedge clk)
   begin
-    if ((RegWrite_W == 1) & (writeReg != `zero) & (jal_control != 1)) // write on control signal
+    #1
+    if ((RegWrite_W == 1) & (writeReg != `zero)) // write on control signal
       begin
+        // $display($time, " Setting %08x to be %08x", writeReg, writeData);
         registers[writeReg] = writeData;
       end
   end

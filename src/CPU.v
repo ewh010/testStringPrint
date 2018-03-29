@@ -257,7 +257,7 @@ module testbench;
       $dumpfile("testbench.vcd");
       $dumpvars(0,testbench);
 
-      $monitor($time, " in %m, currPC = %08x, nextPC = %08x, instruction = %08x, ALUOut_E = %08x, ALUOut_M = %08x, ALUOut_W = %08x, readData_M = %08x, readData_W = %08x, EqualD = %01d, PCSrc_D = %01d, StallF = %01d, BranchD=%1d, jr_control=%d, jal_control=%d, ra=%08x, sp=%08x\n", PC_F, Next_PC, instr_F, ALUOut_E, ALUOut_M, ALUOut_W, readData_M, readData_W, EqualD, PCSrc_D, StallF, BranchD, jr_control, jal_control, ra, sp);
+      // $monitor($time, " in %m, currPC = %08x, nextPC = %08x, instruction = %08x, ALUOut_E = %08x, ALUOut_M = %08x, ALUOut_W = %08x, readData_M = %08x, readData_W = %08x, EqualD = %01d, PCSrc_D = %01d, StallF = %01d, BranchD=%1d, jr_control=%d, jal_control=%d, ra=%08x, sp=%08x\n", PC_F, Next_PC, instr_F, ALUOut_E, ALUOut_M, ALUOut_W, readData_M, readData_W, EqualD, PCSrc_D, StallF, BranchD, jr_control, jal_control, ra, sp);
 
       #5000 $finish;
 
