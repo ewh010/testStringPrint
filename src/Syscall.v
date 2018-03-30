@@ -3,7 +3,7 @@
 
 /* Sycscall module: determine and execute syscall */
 module Syscall(syscall_control, sysstall, v0, a0,
-              stat_control);
+              stat_control, stringAdr);
 
   /* declare inputs */
   input syscall_control, sysstall;
@@ -11,6 +11,7 @@ module Syscall(syscall_control, sysstall, v0, a0,
 
   /* declare outputs */
   output reg stat_control;
+  output reg [31:0] stringAdr;
 
   initial begin
     stat_control = 0;
@@ -27,6 +28,7 @@ module Syscall(syscall_control, sysstall, v0, a0,
 
       else if (v0 == 4)
         $display("\n\nSYCALL STRING PRINT NOT ENABLED\n\n");
+        stringAdr = a0;
 
       // v0 as 10 indicates an execution kill
       else if(v0 == 10)
@@ -36,6 +38,7 @@ module Syscall(syscall_control, sysstall, v0, a0,
         #1; $finish;
       end
 
+      i
     end
   end
 
